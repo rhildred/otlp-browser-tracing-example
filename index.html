@@ -1,33 +1,26 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>
-    <%= htmlWebpackPlugin.options.title %>
-  </title>
-  <style>
-    body {
-      margin: 0;
-    }
-
-    iframe {
-      display: block;
-      /* iframes are inline by default */
-      background: #000;
-      border: none;
-      /* Reset default border */
-      height: 100vh;
-      /* Viewport-relative units */
-      width: 100vw;
-    }
-  </style>
-</head>
-
-<body>
-    <x-connected></x-connected>
-  <script src="mfe.js"></script>
-</body>
-
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Document Load Instrumentation Example</title>
+    <!--
+      https://www.w3.org/TR/trace-context/
+      Set the `traceparent` in the server's HTML template code. It should be
+      dynamically generated server side to have the server's request trace Id,
+      a parent span Id that was set on the server's request span, and the trace
+      flags to indicate the server's sampling decision
+      (01 = sampled, 00 = not sampled).
+      '{version}-{traceId}-{spanId}-{sampleDecision}'
+    -->
+    <meta
+      name="traceparent"
+      content="00-ab42124a3c573678d4d8b21ba52df3bf-d21f7bc17caa5aba-01"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    Example of using Web Tracer with document load instrumentation with console
+    exporter and collector exporter
+    <script type="module" src="document-load.js"></script>
+  </body>
 </html>

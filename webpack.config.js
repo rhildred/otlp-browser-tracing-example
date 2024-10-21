@@ -7,8 +7,7 @@ module.exports = {
   mode: 'development',
   devtool: 'inline-source-map',
   entry: {
-    mfe: __dirname + '/src/main',
-    sw: __dirname + '/src/sw',
+    'document-load': __dirname + '/src/document-load',
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -65,7 +64,7 @@ module.exports = {
   output: {
     filename: '[name].js',
     path: path.resolve(root.path, 'dist'),
-    publicPath: "/wayne_custom_element/"
+    publicPath: "/otlp-browser-tracing-example/"
   },
   devServer: {
     port: 9876,
